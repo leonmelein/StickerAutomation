@@ -33,5 +33,6 @@ for d in *; do
         continue
     fi
 
-    
+    zip "ASCI_Stickers.zip" *.wastickers
+    rm *.wastickers
 done
