@@ -51,11 +51,6 @@ jobs:
         run: |
           chmod +x build.sh
           ./build.sh
-
-      - name: Bump version and push tag
-        uses: hennejg/github-tag-action@v4.1.jh1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Create Release
         id: create_release
