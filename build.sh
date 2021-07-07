@@ -22,18 +22,12 @@ for d in *; do
             continue
         fi
 
-        count = ${ls | wc -l}
-        if [$count -gt 33]; then 
-            echo "❌ Too many files"
-            continue
-        else
-            echo "Building pack..."
-            zip "ASCI_$d.wastickers" *
-            mv "ASCI_$d.wastickers" ../
-            cd ../
-        fi
-
+        
+        echo "Building pack..."
+        zip "ASCI_$d.wastickers" *
+        mv "ASCI_$d.wastickers" ../
         cd ../
+
         echo ''
     else
         continue
