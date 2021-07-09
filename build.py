@@ -8,22 +8,23 @@ def build():
     x = Path('./')
     packs = list(filter(lambda y: y.is_dir(), x.iterdir()))
     packs = [pack for pack in packs if not str(pack).startswith((".", "__"))]
-    test()
 
     print("Building packs...")
-
+    os.mkdir(".release")
+    
     for pack in packs:
         print("\u001b[30;1mPack: {}\u001b[0m".format(pack))
         os.chdir(pack)
 
         try: 
-            file = zipfile.ZipFile('../{}.wastickers'.format(pack), 'w', zipfile.ZIP_DEFLATED)
+            file = zipfile.ZipFile('../.release/{}.wastickers'.format(pack), 'w', zipfile.ZIP_DEFLATED)
 
             for item in [item for item in os.listdir() if not item.startswith(".")]: 
                 file.write(item)
             file.close()
             os.chdir("..")
-        except:
+        except Exception as e:
+            print(e)
             print("Could not build pack")
 
     print("Packs have been built.")

@@ -10,7 +10,7 @@ def test():
 
     for pack in packs:
         os.chdir(pack)
-        print("\u001b[30;1mPack: {}\u001b[0m".format(pack))
+        print("Pack: {}".format(pack))
         errors = 0
 
         required_files = ["title.txt", "author.txt"]
