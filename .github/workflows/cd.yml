@@ -50,10 +50,21 @@ jobs:
       # - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
+      # - name: Build sticker packs
+      #   run: |
+      #     chmod +x build.sh
+      #     ./build.sh
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      
+      - name: Run tests
+        run: python test.py
+      
       - name: Build sticker packs
-        run: |
-          chmod +x build.sh
-          ./build.sh
+        run: python build.py
       
       - name: Create Release
         id: create_release
@@ -68,14 +79,23 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
+      # - name: Upload Release Asset
+      #   id: upload-release-asset 
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+      #     asset_path: ./ASCI_Stickers.zip
+      #     asset_name: ASCI_Stickers.zip
+      #     asset_content_type: application/zip
+
+      - name: Upload Release Assets
+        id: upload-release-assets
+        uses: dwenegar/upload-release-assets@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./ASCI_Stickers.zip
-          asset_name: ASCI_Stickers.zip
-          asset_content_type: application/zip
+          release_id: ${{ steps.create_release.outputs.id }}
+          assets_path: .release/
 
