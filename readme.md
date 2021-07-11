@@ -1,5 +1,5 @@
 # ![alt text](/docs/logo48.png "StickerAutomation") StickerAutomation
-_Automated generation Automated generation of stickers packs compatible with [Sticker maker for WhatsApp](https://getstickerpack.com/)._
+_Automated generation of stickers packs compatible with [Sticker maker for WhatsApp](https://getstickerpack.com/)._
 
 ## Setup
 - Clone this template repository
