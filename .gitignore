@@ -1,3 +1,6 @@
 .DS_Store
-.wastickers
+*.wastickers
 __pycache__/
+.vscode/
+.release/
+*.code-workspace
