@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 def test():
+    os.chdir("src/")
     x = Path('./')
     packs = list(filter(lambda y: y.is_dir(), x.iterdir()))
     packs = [pack for pack in packs if not str(pack).startswith((".", "__"))]
