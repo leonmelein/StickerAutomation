@@ -55,24 +55,27 @@ jobs:
       - name: Build sticker packs
         run: python build.py
       
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.semver.outputs.version_tag }}
-          release_name: Release ${{ steps.semver.outputs.version }}
-          body: |
-            ${{ steps.Changelog.outputs.changelog }}
-          draft: false
-          prerelease: false
+      #  Publish your built sticker packs!
+      #  You can use the example below to create a Github release that puts a tag on your release branch and pushes the packs to a Github Release
 
-      - name: Upload Release Assets
-        id: upload-release-assets
-        uses: dwenegar/upload-release-assets@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          release_id: ${{ steps.create_release.outputs.id }}
-          assets_path: release/
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@latest
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ steps.semver.outputs.version_tag }}
+      #     release_name: Release ${{ steps.semver.outputs.version }}
+      #     body: |
+      #       ${{ steps.Changelog.outputs.changelog }}
+      #     draft: false
+      #     prerelease: false
+
+      # - name: Upload Release Assets
+      #   id: upload-release-assets
+      #   uses: dwenegar/upload-release-assets@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     release_id: ${{ steps.create_release.outputs.id }}
+      #     assets_path: release/
