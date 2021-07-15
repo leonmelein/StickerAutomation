@@ -16,8 +16,13 @@ def build():
         print("\u001b[30;1mPack: {}\u001b[0m".format(pack))
         os.chdir(pack)
 
+        with open('title.txt', 'r') as titlefile:
+            title = titlefile.read()
+
         try: 
-            file = zipfile.ZipFile('../../release/{}.wastickers'.format(pack), 'w', zipfile.ZIP_DEFLATED)
+            file = zipfile.ZipFile(
+                '../../release/{}.wastickers'.format(title), 
+                'w', zipfile.ZIP_DEFLATED)
 
             for item in [item for item in os.listdir() if not item.startswith(".")]: 
                 file.write(item)
