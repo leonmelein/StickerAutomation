@@ -1,4 +1,4 @@
-# ![alt text](/docs/logo48.png "StickerAutomation") StickerAutomation
+# ![alt text](/docs/assets/logo48.png "StickerAutomation") StickerAutomation
 _Automated generation of stickers packs compatible with [Sticker maker for WhatsApp](https://getstickerpack.com/)._
 
 ## Setup
